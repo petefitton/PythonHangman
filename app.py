@@ -90,7 +90,10 @@ def game_loop():
   print(f"The word you need: {underscored_secret_word}")
 
   if hangman_guesses_left > 0:
-    guess = input("Guess a letter:\n")
+    guess = input("Guess a letter:\n").lower()
+    if guess == secret_word:
+      win()
+      return
     # Edge cases for guessing more than one letter or non-letter chars
     for letter in secret_word:
       if letter == guess:
