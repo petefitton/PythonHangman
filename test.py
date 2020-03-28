@@ -31,3 +31,22 @@ hangman6 = "|   / \\"
 hangman7 = "|__________"
 
 print(hangman2 + "\n" + hangman3 + "\n" + hangman4 + "\n" + hangman5 + "\n" + hangman6 + "\n" + hangman7)
+
+num = 1
+quest = False
+if type(num) == int:
+  quest = True
+print(quest)
+
+number = "1"
+print(number)
+print(type(number))
+number = int(number)
+print(type(number))
+
+# letter = "l"
+# print(letter)
+# letter = int(letter)
+# print(letter)
+
+# int("l")

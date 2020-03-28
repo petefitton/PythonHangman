@@ -82,9 +82,10 @@ def failure(guess):
   hangman(hangman_guesses_left)
   game_loop()
 
-
+errors = 0
 # Game Loop
 def game_loop():
+  global errors
   print(f"You have {hangman_guesses_left} guesses left.")
   print(f"You have guessed: {letters_guessed}")
   print(f"The word you need: {underscored_secret_word}")
@@ -95,6 +96,23 @@ def game_loop():
       win()
       return
     # Edge cases for guessing more than one letter or non-letter chars
+    if len(guess) > 1 and errors < 1:
+      print("It looks like you accidentally entered more than one character.")
+      errors += 1
+      game_loop()
+      return
+    try:
+      int(guess)
+      if errors < 1:
+        print("It looks like you accidentally entered a number.")
+        errors += 1
+        game_loop()
+        return
+    except ValueError:
+      # do nothing
+      pass
+    # also could include edge case for special characters
+    # alternative way to handle this would be to use regex
     for letter in secret_word:
       if letter == guess:
         success(guess)
